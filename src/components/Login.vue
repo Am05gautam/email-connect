@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar/>
+    <Navbar style="margin-bottom:0px;"/>
     <form @submit="loginUser" method="POST">
       <h2>Sign In</h2>
       <div>Use your account</div> <br>
@@ -71,4 +71,18 @@ form input{
   width: 18%;
   height: 32px;
 }
+form{
+  padding-top: 5rem;
+}
+@media only screen and (max-width: 768px){
+  form input{
+    width: 60%;
+  }
+  form{
+    background: #ffe01b;
+    height: 100vh;
+    width: 100vw;
+  }
+}
+
 </style>

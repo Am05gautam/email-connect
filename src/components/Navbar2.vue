@@ -6,7 +6,7 @@
       <a href="/home/sendsmail">Group Email</a>
     </div>
 
-    <div class="icon">
+    <div @click="routeToHome" class="icon">
       <img
         src="https://pngimage.net/wp-content/uploads/2018/06/monkey-logo-png.png"
         alt="logo"
@@ -29,6 +29,9 @@ export default {
     logout(){
       localStorage.clear();
       this.$router.push('/');
+    },
+    routeToHome(){
+      this.$router.push('/home');
     }
   }
 };
@@ -90,5 +93,25 @@ a:hover {
 }
 .btn-logout:hover {
   background-color: rgba(255, 4, 4, 0.868);
+}
+
+@media only screen and (max-width: 768px) {
+  .nav {
+    background: white;
+    height: 6rem;
+    margin-bottom: 0.5rem;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.455);
+  }
+  a, strong {
+    display: none;
+  }
+  .icon img{
+    height: 7rem;
+    margin: 0px;
+    float: left;
+  }
+  .btn-logout{
+    width: 8.5rem;
+  }
 }
 </style>

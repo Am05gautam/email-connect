@@ -1,21 +1,28 @@
 <template>
-  <Navbar/>
-  <form class="sign-up" @submit="signupUser" method="POST">
-    <h2>Register yourself</h2>
-    <div>Use your email for registration</div> <br>
-    <input type="text" placeholder="Name" v-model="signup.name" /> <br> <br>
-    <input type="email" placeholder="Email" v-model="signup.email" /> <br> <br>
-    <input type="password" placeholder="Password" v-model="signup.password" /> <br> <br>
-    <button class="btn" type="submit">Sign Up</button> <br>
-  </form>
+  <div>
+    <Navbar style="margin-bottom:0px;"/>
+    <form class="sign-up" @submit="signupUser" method="POST">
+      <h2>Register yourself</h2>
+      <div>Use your email for registration</div>
+      <br />
+      <input type="text" placeholder="Name" v-model="signup.name" /> <br />
+      <br />
+      <input type="email" placeholder="Email" v-model="signup.email" /> <br />
+      <br />
+      <input type="password" placeholder="Password" v-model="signup.password" />
+      <br />
+      <br />
+      <button class="btn" type="submit">Sign Up</button> <br />
+    </form>
+  </div>
 </template>
 
 <script>
-import Navbar from './Navbar';
+import Navbar from "./Navbar";
 import axios from "axios";
 export default {
   name: "SignUp",
-  components:{
+  components: {
     Navbar,
   },
   data: () => {
@@ -40,7 +47,7 @@ export default {
           // console.warn(res.data);
           // console.warn(res.data.message, res.data.userId);
           alert(res.data.message);
-          this.$router.push('/login');
+          this.$router.push("/login");
         })
         .catch((err) => {
           console.warn(err.response.data.message);
@@ -54,7 +61,7 @@ export default {
 </script>
 
 <style scoped>
-.btn{
+.btn {
   /* background: #ffe01b; */
   border: solid 1px black;
   border-radius: 1px;
@@ -62,12 +69,26 @@ export default {
   width: 6em;
   letter-spacing: 1.3px;
 }
-.btn:hover{
+.btn:hover {
   background: black;
   color: white;
 }
-form input{
+form input {
   width: 20%;
   height: 32px;
+}
+form{
+  padding-top: 5rem;
+}
+
+@media only screen and (max-width: 768px){
+  form input{
+    width: 60%;
+  }
+  form{
+    background: #ffe01b;
+    height: 100vh;
+    width: 100vw;
+  }
 }
 </style>

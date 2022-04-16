@@ -1,32 +1,35 @@
 <template>
-  <NavbarComponent />
-  <div class="container center">
-    <!-- enctype="multipart/form-data" -->
-    <form class="send_mail" @submit="send_mail" method="POST">
-      <h2>Send Group Emails</h2>
-      <div>Compose the mail:</div>
-      <br />
-      <input type="email" placeholder="To.." v-model="sendMail.email" /> <br />
-      <br />
-      <input type="text" placeholder="Subject" v-model="sendMail.subject" />
-      <br />
-      <br />
-      <textarea
-        name="text"
-        id="text"
-        cols="35"
-        rows="7"
-        v-model="sendMail.text"
-        placeholder="Text"
-      ></textarea>
-      <br />
-      <br />
-      <!-- <label for="file">Attachements:</label>
+  <div>
+    <NavbarComponent />
+    <div class="container center">
+      <!-- enctype="multipart/form-data" -->
+      <form class="send_mail" @submit="send_mail" method="POST">
+        <h2>Send Group Emails</h2>
+        <div>Compose the mail:</div>
+        <br />
+        <input type="email" placeholder="To.." v-model="sendMail.email" />
+        <br />
+        <br />
+        <input type="text" placeholder="Subject" v-model="sendMail.subject" />
+        <br />
+        <br />
+        <textarea
+          name="text"
+          id="text"
+          cols="35"
+          rows="7"
+          v-model="sendMail.text"
+          placeholder="Text"
+        ></textarea>
+        <br />
+        <br />
+        <!-- <label for="file">Attachements:</label>
       <input type="file" id="file">
       <br />
       <br /> -->
-      <button class="btn" type="submit">Send</button>
-    </form>
+        <button class="btn" type="submit">Send</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -46,19 +49,22 @@ export default {
         subject: "",
         text: "",
       },
+      token:""
     };
   },
   methods: {
     send_mail(e) {
       const data = {
-        email: this.sendMail.email.toLowerCase().trim(),
-        subject: this.sendMail.subject.trim(),
-        text: this.sendMail.text.trim(),
+        email: this.sendMail.email,
+        subject: this.sendMail.subject,
+        text: this.sendMail.text
       };
       // console.warn (JSON.stringify(data));
       axios
-        .post("https://emailconnect.herokuapp.com/auth/email", data)
-        // {headers:{"Authorization":`Bearer ${token}`}},
+        .post(
+          "https://emailconnect.herokuapp.com/auth/email", data,
+          { headers: { Authorization: `Bearer ${this.token}` } }
+        )
         .then((res) => {
           // console.warn(res.data.message);
           alert(res.data.message);
@@ -68,21 +74,21 @@ export default {
         });
 
       this.sendMail.email = "";
-      (this.sendMail.subject = ""), (this.sendMail.text = "");
+      this.sendMail.subject = ""; 
+      this.sendMail.text = "";
 
       e.preventDefault();
     },
   },
   mounted() {
     let user = localStorage.getItem("User");
-    // if(!user){
-    //   alert('Please login in!')
-    //   this.$router.push('/login');
-    // }
-    // else{
-
-    // }
-    return console.warn(user);
+    if (!user) {
+      alert("Please login in!");
+      this.$router.push("/login");
+    }
+    else{
+      this.token = JSON.parse(user).token;
+    }
   },
 };
 </script>
@@ -100,7 +106,7 @@ export default {
   width: 6em;
   letter-spacing: 1.3px;
 }
-.btn:hover{
+.btn:hover {
   background: black;
   color: white;
 }
@@ -110,5 +116,21 @@ form input {
 }
 #file {
   margin: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    background: #ffe01b;
+    margin: 0px;
+    padding-top: 5rem;
+    height: 100vh;
+    width: 100vw;
+  }
+  form input {
+    width: 70%;
+  }
+  form textarea {
+    width: 70%;
+  }
 }
 </style>

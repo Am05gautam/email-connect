@@ -1,20 +1,18 @@
 <template>
   <div class="nav">
     <div class="links">
-      <a href="/">Home 1</a>
-      <a href="#">Home 2</a>
-      <a href="#">Home 3</a>
-      <a href="#">Home 4</a>
+      <a href="/">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
     </div>
 
-    <div class="icon">
+    <div v-on:click="routeToHome" class="icon">
       <img
         src="https://pngimage.net/wp-content/uploads/2018/06/monkey-logo-png.png"
         alt="logo"
       />
-      <strong style="font-size: 18px; text-decoration: overline"
-        >E-Connect</strong
-      >
+      <strong>E-Connect</strong>
     </div>
 
     <div class="register">
@@ -27,14 +25,17 @@
 <script>
 export default {
   name: "NavbarComponent",
-  methods:{
-    login(){
-      this.$router.push('/login');
+  methods: {
+    login() {
+      this.$router.push("/login");
     },
-    signup(){
-      this.$router.push('/signup');
+    signup() {
+      this.$router.push("/signup");
+    },
+    routeToHome(){
+      this.$router.push('/');
     }
-  }
+  },
 };
 </script>
 
@@ -49,7 +50,6 @@ export default {
   margin-bottom: 10rem;
   scroll-behavior: smooth;
   background: #ffe01b;
-
 }
 a {
   text-decoration: none;
@@ -67,7 +67,6 @@ a:hover {
   text-decoration: underline;
   color: #007c89;
 }
-
 .icon {
   flex-grow: 1;
 }
@@ -75,7 +74,9 @@ a:hover {
   flex-grow: 1;
   text-align: end;
 }
-
+.icon strong{
+  font-size: 18px; text-decoration: overline
+}
 .icon img {
   height: 5rem;
   margin: 8px;
@@ -100,5 +101,26 @@ a:hover {
   position: fixed;
   top: 0;
   width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .nav {
+    background: white;
+    height: 7rem;
+    margin-bottom: 7.5rem;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.455);
+  }
+  a, strong, .btn-reg {
+    display: none;
+  }
+  .icon img{
+    height: 7rem;
+    margin: 0px;
+    float: left;
+  }
+  .btn-log{
+    background: black;
+    color: white;
+  }
 }
 </style>

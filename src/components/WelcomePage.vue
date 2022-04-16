@@ -22,8 +22,13 @@
       </div>
       <div class="col-lg-2"></div>
     </div>
-  </div>
 
+    <!-- <div class="row center">
+      <p class="head-content">
+        Why E-connect? <br />
+      </p>
+    </div> -->
+  </div>
 </template>
 
 <script>
@@ -33,11 +38,11 @@ export default {
   components: {
     NavbarComponent,
   },
-  methods:{
-    signup(){
-      this.$router.push('/signup');
-    }
-  }
+  methods: {
+    signup() {
+      this.$router.push("/signup");
+    },
+  },
 };
 </script>
 
@@ -81,5 +86,17 @@ export default {
 }
 .herosection {
   height: 33rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .head-content {
+    font-size: 4.2rem;
+  }
+  .info-content {
+    font-size: 1.6rem;
+  }
+  .herosection {
+    display: none;
+  }
 }
 </style>

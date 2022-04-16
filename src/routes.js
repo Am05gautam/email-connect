@@ -6,6 +6,7 @@ import ComposeEmail from './components/ComposeEmail'
 import ComposeWT from './components/ComposeWT'
 import WelcomePage from './components/WelcomePage'
 import ComposeDT from './components/ComposeDT'
+import Error404 from './components/404'
 
 const routes = [
     {
@@ -42,6 +43,11 @@ const routes = [
         path: '/home/dynamic_template/form',
         name: 'DT-form',
         component: ComposeDT
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        name: '404-page',
+        component: Error404
     }
 ];
 
