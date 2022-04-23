@@ -4,7 +4,7 @@
     <div class="container center">
       <!-- enctype="multipart/form-data" -->
       <form class="send_mail" @submit="send_mail" method="POST">
-        <h2>Send Group Emails</h2>
+        <h2>Send Normal Email</h2>
         <div>Compose the mail:</div>
         <br />
         <input type="email" placeholder="To.." v-model="sendMail.email" />

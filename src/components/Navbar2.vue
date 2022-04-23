@@ -3,7 +3,7 @@
     <div class="links">
       <a href="/home">Home</a>
       <a href="/home/dynamic_template">Dynamic Template</a>
-      <a href="/home/sendsmail">Group Email</a>
+      <a href="/home/sendsmail">Simple Email</a>
     </div>
 
     <div @click="routeToHome" class="icon">

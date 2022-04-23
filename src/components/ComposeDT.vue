@@ -8,118 +8,109 @@
       </h2>
       <br />
       <form class="send_mail" @submit="send_mail" method="POST">
-        <input
-          id="tempId"
-          type="text"
-          placeholder="*Template #id"
-          v-model="sendMail.template_id"
-        />
-        <br />
-        <br />
-        <input
-          type="email"
-          placeholder="*Email.."
-          v-model="sendMail.to.email"
-        />
-        <input type="text" placeholder="Name.." v-model="sendMail.to.name" />
-        <input
-          type="text"
-          placeholder="*Subject"
-          v-model="sendMail.dynamic_template_data.subject"
-        />
-        <br />
-        <br />
-        <input
-          type="url"
-          placeholder="Image_logo"
-          v-model="sendMail.dynamic_template_data.img_logo"
-        />
-        <input
-          type="text"
-          placeholder="*Body  title"
-          v-model="sendMail.dynamic_template_data.title"
-        />
+        <div class="info">
+          <label style="margin-right: 4rem" for="id">Template ID : </label>
+          <input
+            id="tempId"
+            type="text"
+            placeholder="*Paste Here.."
+            v-model="sendMail.template_id"
+          />
+        </div>
 
-        <input
-          type="text"
-          placeholder="*Text field 1"
-          v-model="sendMail.dynamic_template_data.text_01"
-        />
-        <br />
-        <br />
-        <input
-          type="text"
-          placeholder="Text field 2"
-          v-model="sendMail.dynamic_template_data.text_02"
-        />
+        <div class="info">
+          <label style="margin-right: 11rem" for="to">To : </label>
+          <input
+            type="email"
+            placeholder="*Email.."
+            v-model="sendMail.to.email"
+          />
+          <br>
+          <span style="margin-right: 13.7rem"></span>
+          <input type="text" placeholder="Name.." v-model="sendMail.to.name" />
+        </div>
+        <div class="info">
+          <label style="margin-right: 7.5rem" for="subject">Subject : </label>
+          <input
+            type="text"
+            placeholder="*Subject"
+            v-model="sendMail.dynamic_template_data.subject"
+          />
+        </div>
 
-        <input
-          type="text"
-          placeholder="Text field 3"
-          v-model="sendMail.dynamic_template_data.text_03"
-        />
-        <input
-          type="url"
-          placeholder="Button link"
-          v-model="sendMail.dynamic_template_data.btn_href"
-        />
-        <br />
-        <br />
-        <input
-          type="text"
-          placeholder="*Button title"
-          v-model="sendMail.dynamic_template_data.btn_name"
-        />
+        <div class="info">
+          <label style="margin-right: 4.5rem" for="logo_url">Brand Logo : </label>
+          <input
+            type="url"
+            placeholder="Enter the URL.."
+            v-model="sendMail.dynamic_template_data.img_logo"
+          />
+        </div>
+        <div class="info">
+          <label style="margin-right: 4.5rem" for="body">Email Body :</label>
+          <input
+            type="text"
+            placeholder="*Heading"
+            v-model="sendMail.dynamic_template_data.title"
+          /><br>
+          <span style="margin-right: 13.7rem"></span>
+          <input
+            type="text"
+            placeholder="*Text"
+            v-model="sendMail.dynamic_template_data.text_01"
+          /> <br>
+          <span style="margin-right: 13.7rem"></span>
+          <input
+            type="text"
+            placeholder="*Button: Title"
+            v-model="sendMail.dynamic_template_data.btn_name"
+          /><br>
+          <span style="margin-right: 13.7rem"></span>
+          <input
+            type="url"
+            placeholder="Button: Link(URL)"
+            v-model="sendMail.dynamic_template_data.btn_href"
+          />
+        </div>
 
-        <input
-          type="url"
-          placeholder="Gallery images"
-          v-model="sendMail.dynamic_template_data.gallery_img"
-        />
+        <div class="info">
+          <label style="margin-right: 4.5rem" for="images">Add Images : </label>
+          <input
+            type="url"
+            placeholder="Enter URL"
+            v-model="sendMail.dynamic_template_data.gallery_img"
+          />
+        </div>
 
-        <input
-          type="url"
-          placeholder="Social link facebook"
-          v-model="sendMail.dynamic_template_data.social.facebook"
-        />
+        <div class="info">
+          <label style="margin-right: 0.8rem" for="social_links">Connect With Us :</label>
+          <input
+            type="url"
+            placeholder="Facebook"
+            v-model="sendMail.dynamic_template_data.social.facebook"
+          /><br>
+          <span style="margin-right: 13.7rem"></span>
+          <input
+            type="url"
+            placeholder="Twitter"
+            v-model="sendMail.dynamic_template_data.social.twitter"
+          />
+          <br>
+          <span style="margin-right: 13.7rem"></span>
+          <input
+            type="url"
+            placeholder="Instagram"
+            v-model="sendMail.dynamic_template_data.social.instagram"
+          /><br>
+          <span style="margin-right: 13.7rem"></span>
+          <input
+            type="url"
+            placeholder="Pinterest"
+            v-model="sendMail.dynamic_template_data.social.pinterest"
+          />
+        </div>
         <br />
-        <br />
-        <input
-          type="url"
-          placeholder="Social link twitter"
-          v-model="sendMail.dynamic_template_data.social.twitter"
-        />
-
-        <input
-          type="url"
-          placeholder="Social link instagram"
-          v-model="sendMail.dynamic_template_data.social.instagram"
-        />
-        <input
-          type="url"
-          placeholder="Social link pinterest"
-          v-model="sendMail.dynamic_template_data.social.pinterest"
-        />
-        <br />
-        <br />
-        <input
-          class="support"
-          type="url"
-          placeholder="Social link support"
-          v-model="sendMail.dynamic_template_data.social.support"
-        />
-
-        <input
-          class="website"
-          type="url"
-          placeholder="Social link website"
-          v-model="sendMail.dynamic_template_data.social.website"
-        />
-        <br />
-        <br />
-        <button class="btn btn-success" type="submit">Send</button>
-        <br />
-        <br />
+        <button class="btn" type="submit">Send</button>
       </form>
     </div>
   </div>
@@ -204,25 +195,25 @@ export default {
           console.warn(err.response.data.message);
         });
 
-      (this.sendMail.to.email = ""),
-        (this.sendMail.to.name = ""),
-        (this.sendMail.dynamic_template_data.subject = ""),
-        (this.sendMail.dynamic_template_data.text = ""),
-        (this.sendMail.dynamic_template_data.img_logo = ""),
-        (this.sendMail.dynamic_template_data.title = ""),
-        (this.sendMail.dynamic_template_data.text_01 = ""),
-        (this.sendMail.dynamic_template_data.text_02 = ""),
-        (this.sendMail.dynamic_template_data.text_03 = ""),
-        (this.sendMail.dynamic_template_data.btn_href = ""),
-        (this.sendMail.dynamic_template_data.btn_name = ""),
-        (this.sendMail.dynamic_template_data.gallery_img = ""),
-        (this.sendMail.dynamic_template_data.social.facebook = ""),
-        (this.sendMail.dynamic_template_data.social.twitter = ""),
-        (this.sendMail.dynamic_template_data.social.instagram = ""),
-        (this.sendMail.dynamic_template_data.social.pinterest = ""),
-        (this.sendMail.dynamic_template_data.social.support = ""),
-        (this.sendMail.dynamic_template_data.social.website = ""),
-        (this.sendMail.template_id = "");
+      this.sendMail.to.email = "",
+      this.sendMail.to.name = "",
+      this.sendMail.dynamic_template_data.subject = "",
+      this.sendMail.dynamic_template_data.text = "",
+      this.sendMail.dynamic_template_data.img_logo = "",
+      this.sendMail.dynamic_template_data.title = "",
+      this.sendMail.dynamic_template_data.text_01 = "",
+      this.sendMail.dynamic_template_data.text_02 = "",
+      this.sendMail.dynamic_template_data.text_03 = "",
+      this.sendMail.dynamic_template_data.btn_href = "",
+      this.sendMail.dynamic_template_data.btn_name = "",
+      this.sendMail.dynamic_template_data.gallery_img = "",
+      this.sendMail.dynamic_template_data.social.facebook = "",
+      this.sendMail.dynamic_template_data.social.twitter = "",
+      this.sendMail.dynamic_template_data.social.instagram = "",
+      this.sendMail.dynamic_template_data.social.pinterest = "",
+      this.sendMail.dynamic_template_data.social.support = "",
+      this.sendMail.dynamic_template_data.social.website = "",
+      this.sendMail.template_id = "";
     },
   },
   mounted() {
@@ -245,22 +236,27 @@ export default {
   cursor: pointer;
   width: 6em;
   letter-spacing: 1.3px;
+  margin-left: 15.5rem;
 }
 .btn:hover {
   background: black;
   color: white;
 }
 form input {
-  width: 18%;
+  width: 40%;
   height: 32px;
+  margin: 6px;
+  padding: 2px;
+}
+.send_mail {
+  text-align: left;
+  padding: 5rem;
+  background-image: url("https://images.unsplash.com/photo-1589278560468-2f9bbaf07e90?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Nnx8fGVufDB8fHx8&w=1000&q=80");
+  background-size: cover;
+}
+.info{
   margin: 5px;
-}
-.support,
-.website {
-  width: 27.5%;
-}
-#tempId {
-  width: 56%;
+  padding: 5px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -273,13 +269,6 @@ form input {
     width: 70%;
   }
   form textarea {
-    width: 70%;
-  }
-  .support,
-  .website {
-    width: 70%;
-  }
-  #tempId {
     width: 70%;
   }
 }

@@ -24,7 +24,7 @@
             alt="simple_email"
           />
           <div class="overlay">
-            <div v-on:click="sMail" class="text">Group Email</div>
+            <div v-on:click="sMail" class="text">Simple Email</div>
           </div>
         </div>
       </div>
